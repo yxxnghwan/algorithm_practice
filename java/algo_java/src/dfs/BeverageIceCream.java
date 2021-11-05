@@ -46,8 +46,6 @@ public class BeverageIceCream {
 
         // 현재 노드에 대해 음료수 채움
         int result = 0;
-
-        // 2차원 리스트의 맵 정보 입력 받기
         for(int i = 0; i < N; i++) {
             for(int j = 0; j < M; j++) {
                 // 현재 위치에서 DFS 수행

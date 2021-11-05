@@ -81,11 +81,9 @@ public class Maze {
                 int nextX = x + xArr[i];
                 int nextY = y + yArr[i];
                 if(nextX < 0 || nextY < 0 || nextX >= n || nextY >= m) {
-                    System.out.println("[" + nextX + "," + nextY + "] 막힘");
                     continue;
                 } else {
                     if(maze[nextX][nextY] == 1 || (maze[nextX][nextY] > 1 && maze[nextX][nextY] > maze[x][y] + 1)) { // DFS는 한번 방문했던 곳이어도 뒤에 들르는 경로가 최단거리일 수도 있음
-                        System.out.println("[" + nextX + "," + nextY + "] 통과");
                         maze[nextX][nextY] = maze[x][y] + 1;
                         stack.push(new Node(nextX, nextY));
                     }
