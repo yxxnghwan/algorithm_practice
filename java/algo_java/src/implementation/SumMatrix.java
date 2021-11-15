@@ -16,11 +16,7 @@ public class SumMatrix {
     [[1],[2]]	[[3],[4]]	[[4],[6]]
      */
     public static void main(String[] args) {
-        int [][] answer = solution(new int[][]{{1, 2}, {2, 3}}, new int[][]{{3, 4}, {5, 6}});
-
-        for(int i = 0; i < answer.length; i++) {
-            System.out.println(Arrays.toString(answer[i]));
-        }
+        System.out.println(Arrays.deepToString(solution(new int[][]{{1, 2}, {2, 3}}, new int[][]{{3, 4}, {5, 6}})));
     }
 
     public static int[][] solution(int[][] arr1, int[][] arr2) {
