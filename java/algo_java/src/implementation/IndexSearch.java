@@ -20,12 +20,18 @@ public class IndexSearch {
     Output: -1
     No such index exits.
 
+
+    !!! 조건에 충족하는 원소가 여러 개일 경우 모든 원소 출력 !!!
      */
     public static void main(String[] args) {
-        System.out.println(solution(new int[]{5, 1, 4, 3, 6, 8, 10, 7, 9})); // 4
+        solution(new int[]{5, 1, 4, 3, 6, 8, 10, 7, 9});
+
+        solution(new int[] {1, 2, 3, 4});
     }
 
-    public static int solution(int [] arr) {
+    public static void solution(int [] arr) {
+        boolean find = false;
+
         int [] leftMax = new int[arr.length];
         int [] rightMin = new int[arr.length];
         leftMax[0] = Integer.MIN_VALUE;
@@ -33,17 +39,21 @@ public class IndexSearch {
             if(leftMax[i-1] > arr[i-1]) leftMax[i] = leftMax[i-1];
             else leftMax[i] = arr[i-1];
         }
+
         rightMin[arr.length-1] = Integer.MAX_VALUE;
+
         for(int i = arr.length-2; i >= 0; i--) {
-            if(rightMin[i+1] > arr[i+1]) rightMin[i] = arr[i+1];
-            else rightMin[i] = rightMin[i+1];
+            if(rightMin[i+1] < arr[i+1]) rightMin[i] = rightMin[i+1];
+            else rightMin[i] = arr[i+1];
         }
 
         for(int i = 0; i < arr.length; i++) {
-            if(leftMax[i] < arr[i] && rightMin[i] > arr[i]) return i;
+            if(leftMax[i] < arr[i] && rightMin[i] > arr[i]){
+                System.out.println(i);
+                find = true;
+            }
         }
 
-
-        return -1;
+        if(!find) System.out.println(-1);
     }
 }
