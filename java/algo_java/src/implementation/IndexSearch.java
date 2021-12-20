@@ -36,15 +36,13 @@ public class IndexSearch {
         int [] rightMin = new int[arr.length];
         leftMax[0] = Integer.MIN_VALUE;
         for(int i = 1; i < arr.length; i++) {
-            if(leftMax[i-1] > arr[i-1]) leftMax[i] = leftMax[i-1];
-            else leftMax[i] = arr[i-1];
+            leftMax[i] = Math.max(leftMax[i - 1], arr[i - 1]);
         }
 
         rightMin[arr.length-1] = Integer.MAX_VALUE;
 
         for(int i = arr.length-2; i >= 0; i--) {
-            if(rightMin[i+1] < arr[i+1]) rightMin[i] = rightMin[i+1];
-            else rightMin[i] = arr[i+1];
+            rightMin[i] = Math.min(rightMin[i + 1], arr[i + 1]);
         }
 
         for(int i = 0; i < arr.length; i++) {

@@ -28,11 +28,11 @@ public class ToggleCase {
     }
 
     public static String toToggleCase(String s) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for(int i = 0; i < s.length(); i++) {
-            result += (char)(s.charAt(i) ^ 32);
+            result.append((char)(s.charAt(i) ^ 32));
         }
 
-        return result;
+        return result.toString();
     }
 }

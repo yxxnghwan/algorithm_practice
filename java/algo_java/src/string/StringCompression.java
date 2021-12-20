@@ -44,25 +44,21 @@ public class StringCompression {
 	public static int solution(String str) {
 		int answer = Integer.MAX_VALUE;
 		for(int i = 1; i <= str.length() / 2; i++) {
-			String formatString = "";
+			StringBuilder formatString = new StringBuilder();
 			int count = 0;
 			String recentStr = "";
 			for(int j = 0; j < str.length(); j += i) {
-				int targetPoint;
-				if(j + i > str.length())
-					targetPoint = str.length();
-				else
-					targetPoint = j + i;
+				int targetPoint = Math.min(j + i, str.length());
 				String temp = str.substring(j, targetPoint);
 				if(temp.equals(recentStr)) {
 					count++;
 				} else {
-					formatString += (count <= 1 ? "" : count) + recentStr;
+					formatString.append(count <= 1 ? "" : count).append(recentStr);
 					count = 1;
 					recentStr = temp;
 				}
 			}
-			formatString += (count <= 1 ? "" : count) + recentStr;
+			formatString.append(count <= 1 ? "" : count).append(recentStr);
 			if(formatString.length() < answer)
 				answer = formatString.length();
 		}

@@ -44,14 +44,14 @@ public class KakaoSecretMap {
 
 		for (int i = 0; i < n; i++) {
 			row = arr1[i] | arr2[i];
-			String temp = "";
+			StringBuilder temp = new StringBuilder();
 			for (int j = n-1; j >= 0; j--) {
 				if ( ((row >> j) & 1) == 1)
-					temp += "#";
+					temp.append("#");
 				else
-					temp += " ";
+					temp.append(" ");
 			}
-			answer[i] = temp;
+			answer[i] = temp.toString();
 		}
 		return answer;
 	}
